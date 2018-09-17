@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+
+    <h1>Eat The Best Burger Ever!</h1>
+
+    {{!-- shows the list of burgers available to be devoured from mysql db --}}
+    <div class="col-sm-4">
+      <h2>Burgers you can eat!</h2>
+      <ul>
+        {{#each burgers}}
+        {{#if this.devoured}}
+        <li>
+          {{this.burger_name}}
+
+          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="0">
+            <button class="btn" type="submit">Eat me!</button>
+          </form>
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    {{!-- shows option for user to add his/her burger of choice --}}
+    <div class="col-sm-4">
+      <h2>Add your Burger of Choice Brotha!</h2>
+      <form class="create-update-form" action="burgers/create" method="POST">
+
+        <div class="form-group">
+          <label for="bu">Burger Name:</label>
+          <input type="text" id="bu" name="burger_name">
+        </div>
+
+        <button type="submit" name="devoured" value="1" class="btn btn-primary">Add Your Burger</button>
+      </form>
+    </div>
+
+    {{!-- shows a list of burgers user has eaten --}}
+    <div class="col-sm-4">
+      <h2>Burgers you have eaten already!</h2>
+
+      <ul>
+        {{#each burgers}}
+        {{#unless this.devoured}}
+        <li>
+          {{this.burger_name}}
+
+          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="1">
+            <button class="btn" type="submit">Eaten</button>
+          </form>
+        </li>
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+
+  </div>
+</div>
