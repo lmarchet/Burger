@@ -9,8 +9,8 @@ var burger = {
             cb(result);
         });
     },
-    create: function (dbInfo, burgerName, devoured, cb) {
-        orm.create(dbInfo, burgerName, devoured, function (result) {
+    create: function (dbInfo, burgerName, eaten, cb) {
+        orm.create(dbInfo, burgerName, eaten, function (result) {
             cb(result);
         });
     },

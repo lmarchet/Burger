@@ -9,9 +9,9 @@ var orm = {
             cb(result);
         });
     },
-    create: function (dbInfo, burgerName, devoured, cb) {
+    create: function (dbInfo, burgerName, eaten, cb) {
         var queryString = 'INSERT INTO ' + dbInfo + ' (burger_name, devoured) ';
-        queryString += 'VALUES ("' + burgerName + '", ' + devoured + ');';
+        queryString += 'VALUES ("' + burgerName + '", ' + eaten + ');';
 
         console.log(queryString);
 
