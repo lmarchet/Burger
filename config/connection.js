@@ -1,13 +1,16 @@
 var mysql = require('mysql');
-
 var connection;
 
-connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: 'your password',
-	database: 'burgers_db'
-});
+if (process.env.JAWSDB_URL) {
+	conneciton = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+	connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'your password',
+		database: 'burgers_db'
+	});
+}
 
 connection.connect(function (err) {
 	if (err) {
@@ -17,5 +20,6 @@ connection.connect(function (err) {
 	console.log('Connected as id #: ' + connection.threadId);
 });
 
+conneciton.connect();
 // export connection for our ORM use
 module.exports = connection;
