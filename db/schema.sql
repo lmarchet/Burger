@@ -6,5 +6,6 @@ create table burgers
 (
   id int primary key not null,
   burger_name varchar(100) not null,
-  devoured tinyint
+  devoured tinyint,
+  createdAt timestamp default current_timestamp
 );
