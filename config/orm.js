@@ -10,7 +10,7 @@ var orm = {
         });
     },
     create: function (dbInfo, burgerName, eaten, cb) {
-        var queryString = `INSERT INTO ${dbInfo} (burger_name, devoured) values (${burgerName}, ${eaten})`;
+        var queryString = `INSERT INTO ${dbInfo} (burger_name, devoured) values ('${burgerName}', ${eaten})`;
         console.log(queryString);
 
         connection.query(queryString, function (err, result) {
